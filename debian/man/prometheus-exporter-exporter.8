@@ -1,0 +1,90 @@
+.TH PROMETHEUS-EXPORTER-EXPORTER "8" "July 2020"
+
+.SH NAME
+\fBprometheus-exporter-exporter\fR \- simple reverse proxy to other Prometheus exporters
+
+.SH SYNOPSIS
+\fBprometheus-exporter-exporter\fR [\fIOPTIONS\fR]
+
+.SH DESCRIPTION
+
+.TP
+-\fBallow.net\fR \fIvalue\fR
+Allow connection from this network specified in CIDR notation. Can be specified
+multiple times.
+
+.TP
+-\fBconfig.dirs\fR \fIvalue\fR
+The path to directories of configuration files, can be specified multiple times.
+
+.TP
+-\fBconfig.file\fR \fIstring\fR
+The path to the configuration file. (default "/etc/prometheus/exporter-exporter.yml")
+
+.TP
+-\fBconfig.skip-dirs\fR
+Skip non existent -config.dirs entries instead of terminating.
+
+.TP
+-\fBlog.json\fR
+Serialize log messages in JSON
+
+.TP
+-\fBlog.level\fR \fIvalue\fR
+Log level (default warning)
+
+.TP
+-\fBversion\fR
+Print the version and exit
+
+.TP
+-\fBweb.bearer.token\fR \fIstring\fR
+Bearer authentication token.
+
+.TP
+-\fBweb.bearer.token-file\fR \fIstring\fR
+File containing the Bearer authentication token.
+
+.TP
+-\fBweb.listen-address\fR \fIstring\fR
+The address to listen on for HTTP requests. (default ":9999")
+
+.TP
+-\fBweb.proxy-path\fR \fIstring\fR
+The address to listen on for HTTP requests. (default "/proxy")
+
+.TP
+-\fBweb.telemetry-path\fR \fIstring\fR
+The address to listen on for HTTP requests. (default "/metrics")
+
+.TP
+-\fBweb.tls.ca\fR \fIstring\fR
+Path to CA to auth clients against (default "ca.pem")
+
+.TP
+-\fBweb.tls.cert\fR \fIstring\fR
+Path to cert (default "cert.pem")
+
+.TP
+-\fBweb.tls.certmatch\fR \fIstring\fR
+If set, this is used as a regexp that is matched against any certificate subject, dnsname or email address, only certs with a match are verified. web.tls.verify must also be set
+
+.TP
+-\fBweb.tls.key\fR \fIstring\fR
+Path to key (default "key.pem")
+
+.TP
+-\fBweb.tls.listen-address\fR \fIstring\fR
+The address to listen on for HTTPS requests.
+
+.TP
+-\fBweb.tls.verify\fR
+Enable client verification
+
+.SH FILES
+
+.TP
+\fI/etc/default/prometheus-exporter-exporter\fR
+
+.TP
+\fI/etc/prometheus/exporter-exporter.yml\fR

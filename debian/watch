@@ -1,0 +1,5 @@
+version = 4
+opts=filenamemangle=s/(?:.*\/)?v?([^\/]+)\.tar\.gz/prometheus-exporter-exporter-$1.tar.gz/,\
+      dversionmangle=s/\+ds\d*$//,\
+      uversionmangle=s/-?(rc\.?\d+)/~$1/ \
+  https://github.com/QubitProducts/exporter_exporter/tags (?:.*/)?v?(\d[\d\.]*(?:-?rc\.?\d+)?)\.tar\.gz

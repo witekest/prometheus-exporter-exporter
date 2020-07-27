@@ -1,0 +1,33 @@
+Source: prometheus-exporter-exporter
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Johan Fleury <jfleury@arcaik.net>,
+Section: net
+Testsuite: autopkgtest-pkg-go
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-golang,
+               golang-any,
+               golang-github-prometheus-client-golang-dev,
+               golang-github-prometheus-client-model-dev,
+               golang-github-prometheus-common-dev,
+               golang-golang-x-sync-dev,
+               golang-logrus-dev,
+               golang-yaml.v2-dev,
+Standards-Version: 4.5.0
+Vcs-Browser: https://salsa.debian.org/go-team/packages/prometheus-exporter-exporter
+Vcs-Git: https://salsa.debian.org/go-team/packages/prometheus-exporter-exporter.git
+Homepage: https://github.com/QubitProducts/exporter_exporter
+Rules-Requires-Root: no
+XS-Go-Import-Path: github.com/QubitProducts/exporter_exporter
+
+Package: prometheus-exporter-exporter
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends},
+Depends: daemon | systemd-sysv,
+         ${misc:Depends},
+         ${shlibs:Depends},
+Built-Using: ${misc:Built-Using},
+Description: simple reverse proxy to other Prometheus exporters
+ prometheus-exporter-exporter is intended as a single binary alternative to
+ nginx/apache for use in environments where opening multiple TCP ports to all
+ servers might be difficult (technically or politically).

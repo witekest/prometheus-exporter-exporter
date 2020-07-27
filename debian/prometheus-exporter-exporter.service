@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus exporter proxy
+Documentation=https://github.com/QubitProducts/exporter_exporter
+
+[Service]
+Restart=always
+User=prometheus
+EnvironmentFile=/etc/default/prometheus-exporter-exporter
+ExecStart=/usr/bin/prometheus-exporter-exporter $ARGS
+
+[Install]
+WantedBy=multi-user.target

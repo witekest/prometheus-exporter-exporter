@@ -1,0 +1,15 @@
+Description: Set default config path to /etc/prometheus/exporter-exporter.yml
+Author: Johan Fleury <jfleury@arcaik.net>
+Forwarded: not-needed
+
+--- prometheus-exporter-exporter.orig/main.go
++++ prometheus-exporter-exporter/main.go
+@@ -42,7 +42,7 @@ import (
+ var (
+ 	printVersion = flag.Bool("version", false, "Print the version and exit")
+ 
+-	cfgFile  = flag.String("config.file", "expexp.yaml", "The path to the configuration file.")
++	cfgFile  = flag.String("config.file", "/etc/prometheus/exporter-exporter.yml", "The path to the configuration file.")
+ 	cfgDirs  StringSliceFlag
+ 	skipDirs = flag.Bool("config.skip-dirs", false, "Skip non existent -config.dirs entries instead of terminating.")
+ 

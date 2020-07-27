@@ -1,0 +1,32 @@
+#!/usr/bin/make -f
+include /usr/share/dpkg/pkg-info.mk
+
+export DH_VERBOSE=1
+
+BUILDDIR := $(CURDIR)/build
+
+BRANCH     := debian/sid
+USER       := team+pkg-go@tracker.debian.org
+BUILD_DATE  = $(shell date --utc --date='@$(SOURCE_DATE_EPOCH)' \
+    +%Y%m%d-%H:%M:%S)
+GO_VERSION  = $(shell go version | sed 's/go version \(\S*\).*/\1/')
+BUILDFLAGS  = -ldflags \
+  " -X main.Version=$(DEB_VERSION_UPSTREAM) \
+    -X main.Revision=$(DEB_VERSION) \
+    -X main.Branch=$(BRANCH) \
+    -X main.BuildUser=$(USER) \
+    -X main.BuildDate=$(BUILD_DATE) \
+    -X main.GoVersion=$(GO_VERSION)"
+
+%:
+	dh $@ --buildsystem=golang --with=golang --builddirectory=$(BUILDDIR)
+
+BINNAME := $(DEB_SOURCE)
+
+override_dh_auto_build:
+	dh_auto_build -- $(BUILDFLAGS)
+	# Rename the binary to match the Debian package name.
+	mv -v $(BUILDDIR)/bin/exporter_exporter $(BUILDDIR)/bin/$(BINNAME)
+
+override_dh_auto_install:
+	dh_auto_install -- --no-source
