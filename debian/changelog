@@ -1,5 +1,5 @@
-prometheus-exporter-exporter (0.4.0-1) UNRELEASED; urgency=medium
+prometheus-exporter-exporter (0.4.0-1) unstable; urgency=medium
 
   * Initial release (Closes: #968029).
 
- -- Johan Fleury <jfleury@arcaik.net>  Sun, 26 Jul 2020 17:31:31 -0400
+ -- Johan Fleury <jfleury@arcaik.net>  Wed, 26 Aug 2020 11:43:59 +0000
